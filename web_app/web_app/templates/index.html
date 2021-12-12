@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h2 style="font-family: 'Noto Serif', serif;">MachineLurgy</h2>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card card-bg" style="width: 35em;">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold" style="color:blue;">About</h5>
+                  <hr>
+                  <p class="card-text">
+                      MachineLurgy is a web-based application that can predict the mechanical properties of low-alloy steel when provided with required compositons.
+                      As currently there are no precise theoretical methods to predict mechanical properties of steels, all the methods available are backed by statistics 
+                      and extensive physical testing of the materials.<br><br> Since testing each material with different composition is a highly tedious task (imagine the number 
+                      of possibilities!), MachineLurgy helps practitioners to come up with a set of best low-alloy steels that possess required mechanical properties just by providing 
+                      composition of the steel.
+                  </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card card-bg" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold" style="color:blue;">Features</h5>
+                  <hr>
+                  <p class="fw-bold">&#9758 User-friendly UI</p>
+                  <p class="fw-bold">&#9758 Predicts properties such as<br> &emsp;&ensp; - Tensile Strength<br>&emsp;&ensp; - Yield Strength<br>&emsp;&ensp; - Elongation<br>&emsp;&ensp; - Reduction in Area</p>
+                  <p class="fw-bold">&#9758 Keeps track of all<br> &emsp;&ensp; observations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

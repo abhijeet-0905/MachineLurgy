@@ -1,0 +1,170 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="container">
+
+        <form class="from-inline" role="form">
+            <div class="row">
+                <div class="col-sm-2"><h4 style="font-family: 'Noto Serif', serif;">Experiment</h4></div>
+                <div class="col-sm-2"><img class="lab-logo" src="static//lab_logo.png" alt="" width="50" height="40"></div>
+            </div>
+        </form>
+        
+        <form class="from-inline" role="form">
+                <label class="fw-bold" style="font-family: 'Noto Serif', serif;">Enter the weight percentage(%w) of each element below: </label>
+                <a tabindex="0" class="button" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="<b>Note</b>" data-bs-content="In order to get the maximum accuracy, enter the value within the specified range for each element. <br /> <b>Hover over the input field to see the lower and upper limits.</b>" data-bs-html="true" style="border: none; background-color: #A6A6A6; color: black;">
+                    <i class="bi bi-info-circle"></i>
+                </a>
+        </form>
+
+    <form action="{{url_for('lab.lab_')}}" method="POST">
+        <div class="unit">
+            <div class="row mb-3">
+                <label for="carbon" class="col-sm-2 col-form-label">Carbon(C)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" id="carbon" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="min: 0.025&#013;<br>max: 0.35" name="_carbon" value="{{elm1}}"  min="0.025" max="0.35" step=0.0001 required>
+                </div>
+                <label for="silicon" class="col-sm-2 col-form-label">Silicon(Si)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" id="silicon" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="min: 0&#013;<br>max: 0.55" name="_silicon" value="{{elm2}}"  min="0" max="0.55" step=0.0001 required>
+                </div>
+                <div class="col-sm-2" style="padding-left: 45px;">
+                    <button type="submit" class="form-control btn btn-primary btn-sm clearbuttonsize" value="Submit">Compute</button>
+                </div>
+                <label for="tensile" class="col-sm-2 col-form-label">Tensile Strength</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="number" class="form-control paramsize mt-1" id="tensile" value="{{tensile_val}}" step=0.0001 readonly style="text-align: center;">
+                        <div class="input-group-text unitsize mt-1">MPa</div>                
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="manganese" class="col-sm-2 col-form-label">Manganese(Mn)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" id="manganese" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="min: 0.3&#013;<br>max: 1.8" name="_manganese" value="{{elm3}}"  min="0.3" max="1.8" step=0.0001 required>
+                </div>
+                <label for="phosphorus" class="col-sm-2 col-form-label">Phosphorus(P)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" id="phosphorus" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="min: 0&#013;<br>max: 0.05" name="_phosphorus" value="{{elm4}}"  min="0" max="0.05" step=0.0001 required>
+                </div>
+                <div class="col-sm-2" style="padding-left: 50px;">
+                    <input type='button' class="form-control btn btn-secondary btn-sm resetbuttonsize" value='Reset' name='reset' onclick="return clearForm(this.form);">
+                </div>
+                <label for="yield" class="col-sm-2 col-form-label">Yield Strength</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="number" class="form-control paramsize mt-1" id="yield" value="{{yield_val}}" step=0.0001 readonly style="text-align: center;">
+                        <div class="input-group-text unitsize mt-1">MPa</div>                
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="sulphur" class="col-sm-2 col-form-label">Sulphur(S)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" id="sulphur" name="_sulphur" value="{{elm5}}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="min: 0&#013;<br>max: 0.05" min="0" max="0.05" step=0.0001 required>
+                </div>
+                <label for="nickel" class="col-sm-2 col-form-label">Nickel(Ni)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" id="nickel" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" name="_nickel" value="{{elm6}}" title="min: 0&#013;<br>max: 0.6"  min="0" max="0.6" step=0.0001 required>
+                </div>
+                <label for="ria" class="col-sm-2 col-form-label"></label>
+                <label for="elongation" class="col-sm-2 col-form-label">Elongation</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="number" class="form-control paramsize mt-1" id="elongation" value="{{elong_val}}" step=0.01 readonly style="text-align: center;">
+                        <div class="input-group-text unitsize mt-1">%</div>                
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="chromium" class="col-sm-2 col-form-label">Chromium(Cr)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="chromium" name="_chromium" value="{{elm7}}" title="min: 0&#013;<br>max: 1.45"  min="0" max="1.45" step=0.0001 required>
+                </div>
+                <label for="molybdenum" class="col-sm-2 col-form-label">Molybdenum(Mo)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="molybdenum" name="_molybdenum" value="{{elm8}}" title="min: 0&#013;<br>max: 1.35"  min="0" max="1.35" step=0.0001 required>
+                </div>
+                <label for="ria" class="col-sm-2 col-form-label"></label>
+                <label for="ria" class="col-sm-2 col-form-label">Reduction In Area</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="number" class="form-control paramsize mt-1" id="ria" value="{{ria_val}}" step=0.01 readonly style="text-align: center;">
+                        <div class="input-group-text unitsize mt-1">%</div>                
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="copper" class="col-sm-2 col-form-label">Copper(Cu)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="copper" name="_copper" value="{{elm9}}" title="min: 0&#013;<br>max: 0.25" min="0" max="0.25" step=0.0001 required>
+                </div>
+                <label for="vanadium" class="col-sm-2 col-form-label">Vanadium(V)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="vanadium" name="_vanadium" value="{{elm10}}" title="min: 0&#013;<br>max: 0.3"  min="0" max="0.3" step=0.0001 required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="aluminium" class="col-sm-2 col-form-label">Aluminium(Al)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="aluminium" name="_aluminium" value="{{elm11}}" title="min: 0&#013;<br>max: 0.05" min="0" max="0.05" step=0.0001 required>
+                </div>
+                <label for="nitrogen" class="col-sm-2 col-form-label">Nitrogen(N)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="nitrogen" name="_nitrogen" value="{{elm12}}" title="min: 0&#013;<br>max: 0.015"  min="0" max="0.015" step=0.0001 required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="nbta" class="col-sm-2 col-form-label">Niobium(Nb)</label>
+                <div class="col-sm-1">
+                <input type="number" class="form-control boxsize mt-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="nbta" name="_nbta" value="{{elm13}}" title="min: 0&#013;<br>max: 0.002" min="0" max="0.002" step=0.0001 required>
+                </div>
+                <label for="temp" class="col-sm-2 col-form-label ">Temperature(&#8451)</label>
+                <div class="col-sm-1">
+                    <input type="number" class="form-control boxsize" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" id="temp" name="_temp" value="{{elm14}}" title="min: 0&#013;<br>max: 650" min="0" max="650" required>
+                </div>
+                {% if error %}
+                <div class="col-sm-3"><p><strong>Error:</strong><span style="color:red;"> {{ error }}</span></div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+    <script>
+        function clearForm(form) {
+            var $f = $(form);
+            var $f = $f.find(':input').not(':button, :submit, :reset, :hidden');
+            $f.val('').attr('value','').removeAttr('checked').removeAttr('selected');
+        }
+    </script>
+</div>
+
+<script>
+    
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+    })
+
+    var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+  trigger: 'focus'
+})
+</script>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
+<!--
+<form class="form-inline" role="form">
+    <label class="control-label" for="inputSuccess4" style="padding-right: 50px;">NAME</label>
+    <div class="form-group has-success has-feedback">
+      <input type="text" class="form-control" id="inputSuccess4" style="width: 50px;">
+      <span class="glyphicon glyphicon-user form-control-feedback" style="padding-left: 10px;"><i class="bi bi-info-circle"></i></span>
+    </div>
+  </form>
+-->
+
+{% endblock %}

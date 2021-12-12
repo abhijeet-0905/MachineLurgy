@@ -1,0 +1,93 @@
+ /* Chrome, Safari, Edge, Opera */
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+ }
+ 
+ /* Firefox */
+ input[type=number] {
+   -moz-appearance: textfield;
+ }
+
+ .css-serial {
+   counter-reset: serial-number;  /* Set the serial number counter to 0 */
+ }
+
+ .css-serial td:first-child:before {
+   counter-increment: serial-number;  /* Increment the serial number counter */
+   content: counter(serial-number);  /* Display the counter */
+ }
+ 
+ .boxsize {
+   height: 30px;
+   width: 70px;
+   margin-left: -60px
+ }
+ /*
+ .mt-0 {
+   margin-top: 0 !important;
+ }
+ */
+ .paramsize {
+   padding-top: 10px;
+   height: 30px;
+ }
+
+ .fixeddiv {
+   position: fixed;
+ }
+
+ .resetbuttonsize {
+   position: fixed;
+   height: 35px;
+   width: 70px;
+ }
+
+ .clearbuttonsize {
+   position: fixed;
+   height: 35px;
+   width: 80px;
+ }
+
+ .logbuttonsize {
+   height: 35px;
+   width: 70px;
+ }
+
+ .unitsize {
+   height: 30px;
+   width: 50px;
+ }
+ /*
+ body {
+   background-image: url('static\\1477277.jpg');
+ }
+ */
+ body {
+   background-color: #A6A6A6;
+   padding-top: 70px;
+ }
+
+ .table-headers {
+   background-color: #F2F2F2;
+ }
+ 
+ .lab-logo {
+   margin-left: -70px;
+   background-color: #A6A6A6;
+   clip-path: circle();
+
+ }
+
+ .card-bg {
+   background-color: #F2F2F2;
+ }
+
+ .modalbox {
+   padding-top: 30px;
+ }
+
+ .navbar {
+   background-color: #F2F2F2;
+ }

@@ -1,0 +1,69 @@
+https://www.kaggle.com/rohannemade/mechanical-properties-of-low-alloy-steels
+--------------------------------------------------------------------------------
+
+
+Context
+Currently there are no precise theoretical methods to predict mechanical properties of steels. All the methods available are by backed by statistics 
+and extensive physical testing of the materials. Since testing each material with different composition is a highly tedious task (imagine the number 
+of possibilities!), let's apply our knowledge of machine learning and statistics to solve this problem.
+
+Content
+This dataset contains compositions by weight percentages of low-alloy steels along with the temperatures at which the steels were tested and the 
+values mechanical properties observed during the tests. The alloy code is a string unique to each alloy. Weight percentages of alloying metals and 
+impurities like Aluminum, copper, manganese, nitrogen, nickel, cobalt, carbon, etc are given in columns. The temperature in celsius for each test is 
+mentioned in a column. Lastly mechanical properties including tensile strength, yield strength, elongation and reduction in area are given in separate
+columns. The dataset contains 915 rows.
+
+Inspiration
+The challenge is to predict the mechanical properties using the alloy composition and temperature.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+ELEMENTS					MAX
+
+C-Carbon
+Si-Silicon
+Mn-Manganese
+P-Phosphorus
+S-Sulphur
+Ni-Nickel
+Cr-Chromium
+Mo-Molybdenum
+Cu-Copper
+V-Vanadium
+Al-Aluminum
+N-Nitrogen
+nb+ta=Niobium+Tantalum
+
+-------------------------------------------------------------------------------------------
+
+TODO
+
+
+
+1. First, dropping ceq later, drop wverything but ceq
+
+2. For now dropping code column but later try to figure out what it is and then try to generate codes of new alloy base on the nomenclature
+
+find some random data on google to test the model
+
+**********************
+try to do reverse engg.
+with given tensile strength try to predict compositions
+
+**************************
+how compositions and elements are determined?
+
+***************************
+role of each element
+
+for now displaying all values but later i can choose how i want to display it 
+
+#########
+yield is calculated after tensile
+pred yield- 
+1.without tensile
+2.with tensile
+conclusion---not much difference
+###########

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container fixeddiv">
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <h4 style="font-family: 'Noto Serif', serif;">Previous Compositions</h4>
+        </div>
+        <label class="col-sm-8 col-form-label"></label>
+        <div class="col-sm-1">
+            <button type="button" class="form-control btn btn-danger btn-sm logbuttonsize" data-bs-toggle="modal" data-bs-target="#clearModal" value='Clear' name='Clear'>Clear</button>       
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade modalbox" id="clearModal" tabindex="-1" aria-labelledby="clearModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="clearModalLabel">Confirm</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to clear the logs?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <form action="{{url_for('logs.log')}}" method="POST">
+                <button type="submit" class="btn btn-primary" name="Continue" value="Continue">Continue</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <table class="table table-striped table-hover css-serial" id="alloys">
+        <thead>
+          <tr class="table-headers">
+            <th scope="col">ID</th>
+            <th scope="col">Carbon</th>
+            <th scope="col">Silicon</th>
+            <th scope="col">Manganese</th>
+            <th scope="col">Phosphorus</th>
+            <th scope="col">Sulphur</th>
+            <th scope="col">Nickel</th>
+            <th scope="col">Chromium</th>
+            <th scope="col">Molybdenum</th>
+            <th scope="col">Copper</th>
+            <th scope="col">Vanadium</th>
+            <th scope="col">Aluminium</th>
+            <th scope="col">Nitrogen</th>
+            <th scope="col">Niobium</th>
+            <th scope="col">Temperature (&#8451)</th>
+            <th class="table-primary" table-striped scope="col">Tensile Strength (MPa)</th>
+            <th class="table-primary" table-striped scope="col">Yield Strength (MPa)</th>
+            <th class="table-primary" table-striped scope="col">Elongation (%)</th>
+            <th class="table-primary" table-striped scope="col">Reduction In Area (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for elm in alloys_ %}
+                <tr>
+                    <td>{{''}}</td>
+                    <td>{{elm.c}}</td>
+                    <td>{{elm.si}}</td>
+                    <td>{{elm.mn}}</td>
+                    <td>{{elm.p}}</td>
+                    <td>{{elm.s}}</td>
+                    <td>{{elm.ni}}</td>
+                    <td>{{elm.cr}}</td>
+                    <td>{{elm.mo}}</td>
+                    <td>{{elm.cu}}</td>
+                    <td>{{elm.v}}</td>
+                    <td>{{elm.al}}</td>
+                    <td>{{elm.n}}</td>
+                    <td>{{elm.nt}}</td>
+                    <td>{{elm.temp}}</td>
+                    <td class="table-primary">{{elm.tensile}}</td>
+                    <td class="table-primary">{{elm.yield_}}</td>
+                    <td class="table-primary">{{elm.elongation}}</td>
+                    <td class="table-primary">{{elm.reduction}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+
+
+
+{% endblock %}
